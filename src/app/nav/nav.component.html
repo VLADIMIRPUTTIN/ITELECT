@@ -1,0 +1,35 @@
+<div class="navbar">
+  <div class="nav-logo">
+      <img src="assets/img/FoodHub-Full.png" alt="Food Hub Logo">
+  </div>
+  
+  <div class="nav-links" *ngIf="!isSearchVisible">
+    <div class="nav-links">
+      <a routerLink="/home">
+        <i class="icon fas fa-home"></i>
+        <span class="text">Home</span>
+      </a>
+      <a routerLink="/recipe">
+        <i class="icon fas fa-utensils"></i> 
+        <span class="text">Recipe</span>
+      </a>
+      <a routerLink="/about">
+        <i class="icon fas fa-info-circle"></i> 
+        <span class="text">About</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="nav-search">
+    <input class="nav-search-bar" 
+      [ngClass]="{ 'show': isSearchVisible && isMobile }" 
+      type="text" 
+      placeholder="Search recipe..."
+      [(ngModel)]="searchQuery"
+      (input)="onSearch()"> <!-- Emit search on input -->
+    <button class="nav-search-button" (click)="toggleSearchVisibility()">
+      <i class="icon fas" [ngClass]="{ 'fa-search': !isSearchVisible, 'fa-times': isSearchVisible }"></i>
+      <span class="sr-only">Search</span>
+    </button>
+  </div>
+</div>

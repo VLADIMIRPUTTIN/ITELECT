@@ -1,0 +1,70 @@
+<app-nav (searchEvent)="onSearch($event)"></app-nav> <!-- Bind search event -->
+
+<div class="home-wrapper">
+  <!-- Sidebar for Ingredient Selection -->
+  <aside class="ingredient-selection">
+    <h2>Select Ingredients</h2>
+    <div class="ingredient-buttons">
+      <button class="ingredient-button" (click)="toggleIngredient('vinegar')">Vinegar</button>
+      <button class="ingredient-button" (click)="toggleIngredient('soy sauce')">Soy Sauce</button>
+      <button class="ingredient-button" (click)="toggleIngredient('garlic')">Garlic</button>
+      <button class="ingredient-button" (click)="toggleIngredient('chicken')">Chicken</button>
+      <button class="ingredient-button" (click)="toggleIngredient('pork')">Pork</button>
+      <button class="ingredient-button" (click)="toggleIngredient('onion')">Onion</button>
+      <button class="ingredient-button" (click)="toggleIngredient('Rice flour')">Rice flour</button>
+      <button class="ingredient-button" (click)="toggleIngredient('Eggplant')">Eggplant</button>
+      <button class="ingredient-button" (click)="toggleIngredient('Banana heart')">Banana heart</button>
+      <button class="ingredient-button" (click)="toggleIngredient('Water')">Water</button>
+      <button class="ingredient-button" (click)="toggleIngredient('Carrots')">Carrots</button>
+      <button class="ingredient-button" (click)="toggleIngredient('Cabbage')">Cabbage</button>
+      <button class="ingredient-button" (click)="toggleIngredient('Green beans')">Green beans</button>
+      <button class="ingredient-button" (click)="toggleIngredient('Salt')">Salt</button>
+      <button class="ingredient-button" (click)="toggleIngredient('Pepper')">Pepper</button>
+      <button class="ingredient-button" (click)="toggleIngredient('Coconut milk')">Coconut milk</button>
+      <button class="ingredient-button" (click)="toggleIngredient('Ginger')">Ginger</button>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <header class="main-header">
+      <h1 class="text-content">Find Recipes</h1>
+    </header>
+
+    <!-- Selected Ingredients -->
+    <section class="selected-ingredients-container">
+      <h3>Selected Ingredients:</h3>
+      <div class="selected-ingredients">
+        <ul>
+          <li class="selected-item" *ngFor="let ingredient of selectedIngredients">
+            {{ ingredient }}
+            <button class="remove-button" (click)="toggleIngredient(ingredient)">
+                <i class="fas fa-times remove-icon"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Recipe List -->
+    <div class="recipe-list">
+      <h2>Available Recipes ({{ availableRecipesCount }})</h2>
+      <ul>
+        <li class="recipe-item" *ngFor="let recipe of paginatedRecipes" (click)="selectRecipe(recipe)">
+          <h4>{{ recipe.name }}</h4>
+          <p>{{ recipe.description }}</p>
+        </li>
+      </ul>
+    </div>
+
+   <!-- Pagination Controls -->
+<div class="pagination-controls">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">&lt; Previous</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next &gt;</button>
+</div>
+
+    <!-- Recipe Modal -->
+    <app-recipe-modal [recipe]="selectedRecipe" [visible]="modalVisible" (close)="modalVisible = false"></app-recipe-modal>
+  </div>
+</div>

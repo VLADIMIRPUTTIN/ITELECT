@@ -1,0 +1,229 @@
+* { 
+  font-family: 'Helvetica', sans-serif;
+  text-decoration: none;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.home-wrapper {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Helvetica', sans-serif;
+  background-color: #cf996c;
+  min-height: 100vh;
+}
+
+.ingredient-selection {
+  position: fixed;
+  top: 95px;
+  left: 0;
+  width: 220px;
+  height: calc(100% - 95px);
+  background-color: #fff9f3;
+  padding: 1.5rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+  z-index: 1;
+  transition: top 0.3s ease;
+}
+
+.ingredient-selection h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #e09f56;
+}
+
+.ingredient-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.ingredient-button {
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: #d35400;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+
+  &:hover {
+    background: linear-gradient(135deg, #f78c45, #f9c2a3);
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+}
+
+.search-recipes-button {
+  display: inline-block;
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #e09f56;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background-color: #f2c382;
+  }
+}
+
+.main-content {
+  margin-left: 260px;
+  flex-grow: 1;
+  padding: 2rem;
+  background-color: #cf996c;
+}
+
+.main-header {
+  position: relative; 
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  margin-bottom: 5px;
+  width: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background-image: url("/assets/img/background-img.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden; 
+  color: #fff;
+}
+
+.main-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 12px; 
+  z-index: 1; 
+}
+
+.text-content {
+  flex: 1;
+  text-align: left;
+  color: #fff;
+  position: relative; 
+  z-index: 2;
+}
+
+.selected-ingredients {
+  background-color: #fff5e6;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+h3 {
+  font-size: 1.1rem;
+  color: #ffeedb;
+  margin-bottom: 0.75rem;
+}
+
+h2 { 
+  color: #e09f56; 
+}
+
+.selected-ingredients ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.selected-item {
+  display: inline-flex;
+  align-items: center;
+  background: #e09f56;
+  border-radius: 20px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  font-family: 'Helvetica', sans-serif;
+  color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    background: linear-gradient(135deg, #f78c45, #ffeedb);
+    color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  font-size: 0.8rem;
+  color: #ff4d4f;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #ff2d2f;
+  }
+}
+
+.recipe-list {
+  background-color: #fff5e6;
+  border: none;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.recipe-item {
+  padding: 1rem;
+  border-bottom: none;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #d35400;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: #666666;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ingredient-selection {
+    width: 150px;
+    top: 70px; 
+    padding: 1rem;
+  }
+
+  .main-content {
+    margin-left: 170px;
+    width: 100%;
+    padding: 1rem;
+    }
+  }
+  
+
